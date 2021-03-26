@@ -9,19 +9,22 @@ const StartCall = () => {
     setPricePerHour(e.target.value);
   };
 
+  const PricePicker = () => {
+    return <input style={PricePickerStyle}
+    value={pricePerHour}
+    onChange={pricePerHourHandler}
+    type="number"
+    name=""
+    id="" />
+  }
+
   return (
     <div className="startCall">
       <Call>
         <SetPrice>
           <h2>Price/Hour:</h2>
           <form>
-            <PricePicker
-              value={pricePerHour}
-              onChange={pricePerHourHandler}
-              type="number"
-              name=""
-              id=""
-            />
+            <PricePicker/>
           </form>
         </SetPrice>
       </Call>
@@ -48,10 +51,10 @@ const SetPrice = styled.div`
   }
 `;
 
-const PricePicker = styled.input`
-  width: 70px;
-  height: 40px;
-  text-align: center;
-`;
+const PricePickerStyle = ({
+  width: 70,
+  height: 40,
+  textAlign: "center"
+})
 
 export default StartCall;
