@@ -1,3 +1,8 @@
+Calc in real time the price of your hour!
+
+Just set the hour and then you're good to go.
+The timer is arealdy setted to 55s because it's easier to calc the price per minute, but once you reset, everithing goes back to 0.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
