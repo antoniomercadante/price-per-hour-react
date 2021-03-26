@@ -7,8 +7,13 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color:#eb9393 ;
+    
+}
+
+body {
+    color: white;
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
 }
 
 button{
