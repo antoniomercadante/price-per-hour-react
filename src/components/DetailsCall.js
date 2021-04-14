@@ -1,15 +1,11 @@
-import { useState, useRef, useEffect } from "react";
-
+import { useState, useEffect } from "react";
 import BackgroundImgBtn from "../img/background.jpg";
-
-import ControlButtons from "./ControlButtons";
-
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 
 const DetailsCall = ({ pricePerHour }) => {
-  const [price, setPrice] = useState("R$ 0.00");
+  const [price, setPrice] = useState("R$ 0,00");
   const [timer, setTimer] = useState(55);
   const [isActive, setIsActive] = useState(false);
 
@@ -19,7 +15,7 @@ const DetailsCall = ({ pricePerHour }) => {
   }
   function reset() {
     setTimer(0);
-    setPrice("R$00,00");
+    setPrice("R$ 0,00");
     setIsActive(false);
     console.log("reset:" + isActive);
   }
@@ -48,7 +44,7 @@ const DetailsCall = ({ pricePerHour }) => {
     const pricePerMin = pricePerHour / 60;
     const pricePerSec = pricePerMin / 60;
     const finalPrice = pricePerSec * timer;
-    setPrice(`R$ ${finalPrice.toFixed(2)}`);
+    setPrice(`R$ ${finalPrice.toFixed(2).replace(".", ",")}`);
     console.log(finalPrice);
   };
 
