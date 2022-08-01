@@ -24,7 +24,7 @@ const Call = () => {
 };
 
 const PriceInputContainer = styled.div`
-  background: red;
+  background: rgb(0, 0, 0);
   padding: 1.6rem 0rem;
   margin: 0rem 0 4rem 0rem;
   border-radius: 15px;

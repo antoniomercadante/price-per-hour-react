@@ -1,6 +1,6 @@
 const CallPriceInput = ({ pricePerHour, pricePerHourHandler }) => {
   return (
-    <form>
+    <>
       <label htmlFor="price">Price/Hour:</label>
       <input
         style={PricePickerStyle}
@@ -10,7 +10,7 @@ const CallPriceInput = ({ pricePerHour, pricePerHourHandler }) => {
         value={pricePerHour}
         onChange={pricePerHourHandler}
       />
-    </form>
+    </>
   );
 };
 

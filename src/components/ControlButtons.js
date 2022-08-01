@@ -28,7 +28,7 @@ const Button = styled.button`
   background: rgba(38, 245, 90, 0.897);
   box-shadow: 0px 0px 30px rgba(53, 251, 86, 0.438);
   border: none;
-  margin: auto;
+  margin: 3rem auto;
 
   ${(props) =>
     props.off &&
