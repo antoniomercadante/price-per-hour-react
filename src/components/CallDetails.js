@@ -60,7 +60,7 @@ const CallDetails = ({ pricePerHour }) => {
           <Info className="price">{price}</Info>
           <Info className="time">{formatTime()}</Info>
         </Details>
-        <ButtonWrapper>
+        <ButtonContainer>
           {!isActive ? (
             <Button onClick={activate}>
               <FontAwesomeIcon icon={faPhone} />
@@ -70,7 +70,7 @@ const CallDetails = ({ pricePerHour }) => {
               <FontAwesomeIcon icon={faPhoneSlash} />
             </Button>
           )}
-        </ButtonWrapper>
+        </ButtonContainer>
       </CallWrapper>
     </div>
   );
@@ -109,7 +109,7 @@ const Info = styled.h2`
   padding: 1rem;
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
