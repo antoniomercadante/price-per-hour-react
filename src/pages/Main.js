@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import BackgroundImg from "../assets/img/background2.jpg";
 
-import StartCall from "../components/StartCall";
+import Call from "../components/Call";
 import User from "../components/User";
 
 function Main() {
@@ -9,7 +9,7 @@ function Main() {
         <Background>
             <Container>
                 <User name={'Toni'} />
-                <StartCall />
+                <Call />
             </Container>
         </Background>
     )

@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 
-const DetailsCall = ({ pricePerHour }) => {
+const CallDetails = ({ pricePerHour }) => {
   const [price, setPrice] = useState("R$ 0,00");
   const [timer, setTimer] = useState(55);
   const [isActive, setIsActive] = useState(false);
@@ -131,4 +131,5 @@ const Info = styled.h2`
   border-radius: 4rem;
   padding: 1rem;
 `;
-export default DetailsCall;
+
+export default CallDetails;
