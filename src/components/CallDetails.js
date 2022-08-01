@@ -5,12 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 import { formatTime, priceHandler } from "../utils/TimerUtils";
 
+import ControlButtons from "./ControlButtons";
 
 const CallDetails = ({ pricePerHour }) => {
   const [price, setPrice] = useState("R$ 0,00");
   const [timer, setTimer] = useState(55);
   const [isActive, setIsActive] = useState(false);
 
+  function activate() {
+    setIsActive(true)
+  }
 
   function reset() {
     setPrice("R$ 0,00");
@@ -39,13 +43,10 @@ const CallDetails = ({ pricePerHour }) => {
         <Info className="price">{price}</Info>
         <Info className="time">{formatTime(timer)}</Info>
       </Details>
-      <ButtonContainer>
-        <Button
-          off={isActive}
-          onClick={!isActive ? () => setIsActive(true) : reset}>
-          <FontAwesomeIcon icon={!isActive ? faPhone : faPhoneSlash} />
-        </Button>
-      </ButtonContainer>
+      <ControlButtons
+        activate={activate}
+        isActive={isActive}
+        reset={reset} />
     </CallWrapper >
   );
 };

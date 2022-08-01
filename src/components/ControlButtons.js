@@ -3,18 +3,20 @@ import { faPhone, faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 import styled, { css } from "styled-components";
 
 const ControlButtons = ({ isActive, activate, reset }) => {
+  function handleClick() {
+    if (isActive) {
+      reset();
+    } else {
+      activate();
+    }
+  }
   return (
-    <div>
-      {!isActive ? (
-        <Button onClick={activate}>
-          <FontAwesomeIcon icon={faPhone} />
-        </Button>
-      ) : (
-        <Button off onClick={reset}>
-          <FontAwesomeIcon icon={faPhoneSlash} />
-        </Button>
-      )}
-    </div>
+    <Button
+      off={isActive}
+      onClick={handleClick}>
+      <FontAwesomeIcon icon={!isActive ? faPhone : faPhoneSlash} />
+    </Button>
+
   );
 };
 
