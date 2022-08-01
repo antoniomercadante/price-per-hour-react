@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 import BackgroundImgBtn from "../assets/img/background.jpg";
-import styled, { css } from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 import { formatTime, priceHandler } from "../utils/TimerUtils";
 
 import ControlButtons from "./ControlButtons";
@@ -33,7 +31,7 @@ const CallDetails = ({ pricePerHour }) => {
     }
 
     return () => clearInterval(interval);
-  }, [isActive, timer]);
+  }, [isActive, timer, pricePerHour]);
 
   return (
     <CallWrapper>
@@ -77,34 +75,6 @@ const Info = styled.h2`
   font-size: 1.4em;
   border-radius: 4rem;
   padding: 1rem;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 5rem;
-`;
-
-const Button = styled.button`
-  text-align: center;
-  font-size: 1em;
-  border-radius: 50%;
-  height: 3.6rem;
-  width: 3.6rem;
-  border-radius: 50%;
-  color: #f6e8e8;
-  background: rgba(38, 245, 90, 0.897);
-  box-shadow: 0px 0px 30px rgba(53, 251, 86, 0.438);
-  border: none;
-  transition: ease-in-out 0.3s;
-
-  ${(props) =>
-    props.off &&
-    css`
-      background: rgba(255, 38, 38, 0.938);
-      box-shadow: 0px 0px 30px rgba(255, 59, 59, 0.863);
-    `}
 `;
 
 export default CallDetails;

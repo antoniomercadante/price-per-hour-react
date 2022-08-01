@@ -1,7 +1,7 @@
-import CallPriceInput from "./CallPriceInput";
-import CallDetails from "./CallDetails";
 import { useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import CallDetails from "./CallDetails";
+import CallPriceInput from "./CallPriceInput";
 
 const Call = () => {
   const [pricePerHour, setPricePerHour] = useState(0);
