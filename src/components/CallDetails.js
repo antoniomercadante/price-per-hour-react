@@ -3,22 +3,19 @@ import BackgroundImgBtn from "../assets/img/background.jpg";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
+import { formatTime, priceHandler } from "../utils/TimerUtils";
+
 
 const CallDetails = ({ pricePerHour }) => {
   const [price, setPrice] = useState("R$ 0,00");
   const [timer, setTimer] = useState(55);
   const [isActive, setIsActive] = useState(false);
 
-  function activate() {
-    setIsActive(true);
-    console.log("activae:" + isActive);
-  }
 
   function reset() {
-    setTimer(0);
     setPrice("R$ 0,00");
+    setTimer(0);
     setIsActive(false);
-    console.log("reset:" + isActive);
   }
 
   useEffect(() => {
@@ -27,42 +24,25 @@ const CallDetails = ({ pricePerHour }) => {
     if (isActive) {
       interval = setInterval(() => {
         setTimer((timer) => timer + 1);
-        priceHandler();
+        setPrice(priceHandler(pricePerHour, timer));
       }, 1000);
     }
 
     return () => clearInterval(interval);
   }, [isActive, timer]);
 
-  const formatTime = () => {
-    const getSeconds = `0${timer % 60}`.slice(-2);
-    const minutes = `${Math.floor(timer / 60)}`;
-    const getMinutes = `0${minutes % 60}`.slice(-2);
-    const getHours = `0${Math.floor(timer / 3600)}`.slice(-2);
 
-    return `${getHours}:${getMinutes}:${getSeconds}`;
-  };
-
-  const priceHandler = () => {
-    const pricePerMin = pricePerHour / 60;
-    const pricePerSec = pricePerMin / 60;
-    const finalPrice = pricePerSec * timer;
-
-    setPrice(`R$ ${finalPrice.toFixed(2).replace(".", ",")}`);
-
-    console.log(finalPrice);
-  };
 
   return (
     <div>
       <CallWrapper>
         <Details>
           <Info className="price">{price}</Info>
-          <Info className="time">{formatTime()}</Info>
+          <Info className="time">{formatTime(timer)}</Info>
         </Details>
         <ButtonContainer>
           {!isActive ? (
-            <Button onClick={activate}>
+            <Button onClick={() => setIsActive(true)}>
               <FontAwesomeIcon icon={faPhone} />
             </Button>
           ) : (
