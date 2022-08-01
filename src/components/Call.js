@@ -1,3 +1,4 @@
+import CallPriceInput from "./CallPriceInput";
 import CallDetails from "./CallDetails";
 import { useState } from "react";
 import styled, { css } from "styled-components";
@@ -9,31 +10,18 @@ const Call = () => {
     setPricePerHour(e.target.value);
   };
 
-  const PriceInput = () => {
-    return (
-      <form>
-        <label htmlFor="price">Price/Hour:</label>
-        <input style={PricePickerStyle}
-          id="price"
-          name=""
-          type="number"
-          value={pricePerHour}
-          onChange={pricePerHourHandler}
-        />
-      </form>
-    )
-  }
-
   return (
     <>
       <PriceInputContainer>
-        <PriceInput />
+        <CallPriceInput
+          pricePerHour={pricePerHour}
+          pricePerHourHandler={pricePerHourHandler}
+        />
       </PriceInputContainer>
       <CallDetails pricePerHour={pricePerHour} />
     </>
   );
 };
-
 
 const PriceInputContainer = styled.div`
   background: red;
@@ -49,11 +37,5 @@ const PriceInputContainer = styled.div`
     text-shadow: 2px 2px 16px rgba(206, 200, 200, 0.767);
   }
 `;
-
-const PricePickerStyle = ({
-  width: 70,
-  height: 40,
-  textAlign: "center"
-})
 
 export default Call;
