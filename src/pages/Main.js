@@ -5,16 +5,15 @@ import Call from "../components/Call";
 import User from "../components/User";
 
 function Main() {
-    return (
-        <Background>
-            <Container>
-                <User name={'Toni'} />
-                <Call />
-            </Container>
-        </Background>
-    )
+  return (
+    <Background>
+      <Container>
+        <User name={"Toni"} />
+        <Call />
+      </Container>
+    </Background>
+  );
 }
-
 
 const Background = styled.div`
   background-image: url(${BackgroundImg});
@@ -30,7 +29,6 @@ const Container = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   width: 360px;
   padding: 1rem;
   gap: 20px;
@@ -39,14 +37,6 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.507);
   border: 1px rgba(255, 255, 255, 0.4) solid;
   box-shadow: 0 4px 16px 0 rgba(109, 109, 122, 0.329);
-
-  /* 
-  backdrop-filter: blur(7px);
-  background-color: rgba(38, 38, 39, 0.267);
-  -webkit-backdrop-filter: blur(7px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18); */
 `;
-
 
 export default Main;

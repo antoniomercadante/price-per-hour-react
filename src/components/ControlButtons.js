@@ -11,12 +11,9 @@ const ControlButtons = ({ isActive, activate, reset }) => {
     }
   }
   return (
-    <Button
-      off={isActive}
-      onClick={handleClick}>
+    <Button off={isActive} onClick={handleClick}>
       <FontAwesomeIcon icon={!isActive ? faPhone : faPhoneSlash} />
     </Button>
-
   );
 };
 

@@ -13,7 +13,7 @@ const CallDetails = ({ pricePerHour }) => {
   const [isActive, setIsActive] = useState(false);
 
   function activate() {
-    setIsActive(true)
+    setIsActive(true);
   }
 
   function reset() {
@@ -35,19 +35,14 @@ const CallDetails = ({ pricePerHour }) => {
     return () => clearInterval(interval);
   }, [isActive, timer]);
 
-
-
   return (
     <CallWrapper>
       <Details>
         <Info className="price">{price}</Info>
         <Info className="time">{formatTime(timer)}</Info>
       </Details>
-      <ControlButtons
-        activate={activate}
-        isActive={isActive}
-        reset={reset} />
-    </CallWrapper >
+      <ControlButtons activate={activate} isActive={isActive} reset={reset} />
+    </CallWrapper>
   );
 };
 
