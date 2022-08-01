@@ -34,25 +34,19 @@ const CallDetails = ({ pricePerHour }) => {
 
 
   return (
-    <div>
-      <CallWrapper>
-        <Details>
-          <Info className="price">{price}</Info>
-          <Info className="time">{formatTime(timer)}</Info>
-        </Details>
-        <ButtonContainer>
-          {!isActive ? (
-            <Button onClick={() => setIsActive(true)}>
-              <FontAwesomeIcon icon={faPhone} />
-            </Button>
-          ) : (
-            <Button off onClick={reset}>
-              <FontAwesomeIcon icon={faPhoneSlash} />
-            </Button>
-          )}
-        </ButtonContainer>
-      </CallWrapper>
-    </div>
+    <CallWrapper>
+      <Details>
+        <Info className="price">{price}</Info>
+        <Info className="time">{formatTime(timer)}</Info>
+      </Details>
+      <ButtonContainer>
+        <Button
+          off={isActive}
+          onClick={!isActive ? () => setIsActive(true) : reset}>
+          <FontAwesomeIcon icon={!isActive ? faPhone : faPhoneSlash} />
+        </Button>
+      </ButtonContainer>
+    </CallWrapper >
   );
 };
 
