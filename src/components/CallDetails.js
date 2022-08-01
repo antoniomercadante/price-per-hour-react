@@ -13,6 +13,7 @@ const CallDetails = ({ pricePerHour }) => {
     setIsActive(true);
     console.log("activae:" + isActive);
   }
+
   function reset() {
     setTimer(0);
     setPrice("R$ 0,00");
@@ -22,12 +23,14 @@ const CallDetails = ({ pricePerHour }) => {
 
   useEffect(() => {
     let interval = null;
+
     if (isActive) {
       interval = setInterval(() => {
         setTimer((timer) => timer + 1);
         priceHandler();
       }, 1000);
     }
+
     return () => clearInterval(interval);
   }, [isActive, timer]);
 
@@ -44,7 +47,9 @@ const CallDetails = ({ pricePerHour }) => {
     const pricePerMin = pricePerHour / 60;
     const pricePerSec = pricePerMin / 60;
     const finalPrice = pricePerSec * timer;
+
     setPrice(`R$ ${finalPrice.toFixed(2).replace(".", ",")}`);
+
     console.log(finalPrice);
   };
 
@@ -71,13 +76,6 @@ const CallDetails = ({ pricePerHour }) => {
   );
 };
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 5rem;
-`;
-
 const CallWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -92,6 +90,30 @@ const Details = styled.div`
   align-items: center;
   justify-content: space-around;
   margin-top: 1rem;
+`;
+
+const Info = styled.h2`
+  /* background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(32, 32, 33, 0.9752275910364145) 54%,
+    rgba(98, 98, 98, 1) 96%
+  ); */
+  background: url(${BackgroundImgBtn});
+  background-size: cover;
+  filter: brightness(0.9);
+  text-align: center;
+  font-size: 1.4em;
+  border-radius: 4rem;
+  padding: 1rem;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
 `;
 
 const Button = styled.button`
@@ -113,23 +135,6 @@ const Button = styled.button`
       background: rgba(255, 38, 38, 0.938);
       box-shadow: 0px 0px 30px rgba(255, 59, 59, 0.863);
     `}
-`;
-
-const Info = styled.h2`
-  /* background: rgb(0, 0, 0);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(32, 32, 33, 0.9752275910364145) 54%,
-    rgba(98, 98, 98, 1) 96%
-  ); */
-  background: url(${BackgroundImgBtn});
-  background-size: cover;
-  filter: brightness(0.9);
-  text-align: center;
-  font-size: 1.4em;
-  border-radius: 4rem;
-  padding: 1rem;
 `;
 
 export default CallDetails;
