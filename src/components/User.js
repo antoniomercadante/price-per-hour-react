@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const UserName = ({ name }) => {
+const User = ({ name }) => {
   return <Name>{name}</Name>;
 };
 
@@ -12,4 +12,4 @@ const Name = styled.h2`
   text-shadow: 2px 2px 16px rgba(206, 200, 200, 0.767);
 `;
 
-export default UserName;
+export default User;

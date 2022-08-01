@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import BackgroundImgBtn from "../img/background.jpg";
+import BackgroundImgBtn from "../assets/img/background.jpg";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
