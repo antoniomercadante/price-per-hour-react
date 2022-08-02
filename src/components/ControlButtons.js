@@ -2,12 +2,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 import styled, { css } from "styled-components";
 
-const ControlButtons = ({ isActive, activate, reset }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { activate, deactivate } from "../features/timer/timerSlice";
+
+const ControlButtons = () => {
+  const dispatch = useDispatch();
+  const isActive = useSelector((state) => state.timer.isActive);
+
   function handleClick() {
     if (isActive) {
-      reset();
+      dispatch(deactivate());
     } else {
-      activate();
+      dispatch(activate());
     }
   }
   return (

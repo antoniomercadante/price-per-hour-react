@@ -1,45 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import BackgroundImgBtn from "../assets/img/background.jpg";
 import { formatTime, priceHandler } from "../utils/TimerUtils";
 
 import ControlButtons from "./ControlButtons";
 
-const CallDetails = ({ pricePerHour }) => {
-  const [price, setPrice] = useState("R$ 0,00");
-  const [timer, setTimer] = useState(55);
-  const [isActive, setIsActive] = useState(false);
+import { useDispatch, useSelector } from "react-redux";
+import { incrementSecond } from "../features/timer/timerSlice";
 
-  function activate() {
-    setIsActive(true);
-  }
+const CallDetails = () => {
+  const dispatch = useDispatch();
 
-  function reset() {
-    setPrice("R$ 0,00");
-    setTimer(0);
-    setIsActive(false);
-  }
+  const pricePerHour = useSelector((state) => state.price.value);
+  const isActive = useSelector((state) => state.timer.isActive);
+  const timer = useSelector((state) => state.timer.value);
 
   useEffect(() => {
     let interval = null;
 
     if (isActive) {
       interval = setInterval(() => {
-        setTimer((timer) => timer + 1);
-        setPrice(priceHandler(pricePerHour, timer));
+        dispatch(incrementSecond());
       }, 1000);
     }
 
     return () => clearInterval(interval);
-  }, [isActive, timer, pricePerHour]);
+  }, [dispatch, isActive, timer]);
 
   return (
     <CallWrapper>
       <Details>
-        <Info className="price">{price}</Info>
+        <Info className="price">{priceHandler(pricePerHour, timer)}</Info>
         <Info className="time">{formatTime(timer)}</Info>
       </Details>
-      <ControlButtons activate={activate} isActive={isActive} reset={reset} />
+      <ControlButtons />
     </CallWrapper>
   );
 };
@@ -61,13 +55,6 @@ const Details = styled.div`
 `;
 
 const Info = styled.h2`
-  /* background: rgb(0, 0, 0);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(32, 32, 33, 0.9752275910364145) 54%,
-    rgba(98, 98, 98, 1) 96%
-  ); */
   background: url(${BackgroundImgBtn});
   background-size: cover;
   filter: brightness(0.9);

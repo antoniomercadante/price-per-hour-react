@@ -1,30 +1,20 @@
-import { useState } from "react";
 import styled from "styled-components";
 import CallDetails from "./CallDetails";
 import CallPriceInput from "./CallPriceInput";
 
 const Call = () => {
-  const [pricePerHour, setPricePerHour] = useState(0);
-
-  const pricePerHourHandler = (e) => {
-    setPricePerHour(e.target.value);
-  };
-
   return (
     <>
       <PriceInputContainer>
-        <CallPriceInput
-          pricePerHour={pricePerHour}
-          pricePerHourHandler={pricePerHourHandler}
-        />
+        <CallPriceInput />
       </PriceInputContainer>
-      <CallDetails pricePerHour={pricePerHour} />
+      <CallDetails />
     </>
   );
 };
 
 const PriceInputContainer = styled.div`
-  background: rgb(0, 0, 0);
+  background: rgba(22, 22, 22, 0.95);
   padding: 1.6rem 0rem;
   margin: 0rem 0 4rem 0rem;
   border-radius: 15px;
